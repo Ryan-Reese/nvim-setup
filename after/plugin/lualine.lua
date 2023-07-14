@@ -21,10 +21,15 @@ require('lualine').setup {
     lualine_a = {'mode'},
     lualine_b = {'branch', 'diff', 'diagnostics'},
     lualine_c = {
-      'filetype',
+      {
+        'filetype',
+        colored = true,   -- Displays filetype icon in color if set to true
+        icon_only = true, -- Display only an icon for filetype
+        icon = { align = 'right' }, -- Display filetype icon on the right hand side
+      },
       {
         'filename',
-        path = 1,
+        path = 0,
         shorting_target = 40,
       },
     },
@@ -47,6 +52,6 @@ require('lualine').setup {
   tabline = {},
   winbar = {},
   inactive_winbar = {},
-  extensions = {}
+  extensions = {'fugitive', 'fzf', 'trouble'}
 }
 

@@ -53,19 +53,26 @@ return require('packer').startup(function(use)
     -- helper packages
     use('lukas-reineke/indent-blankline.nvim')
     use('mbbill/undotree')
+    use('tpope/vim-sleuth')
     use {
         'numToStr/Comment.nvim',
         config = function()
             require('Comment').setup()
         end
     }
-    use('tpope/vim-sleuth')
     use({
         "folke/trouble.nvim",
         config = function()
             require("trouble").setup()
         end
     })
+    use {
+        "danymat/neogen",
+        config = function()
+            require('neogen').setup {}
+        end,
+        requires = "nvim-treesitter/nvim-treesitter",
+    }
 
     -- visual packages
     use({ 'rose-pine/neovim', as = 'rose-pine' })

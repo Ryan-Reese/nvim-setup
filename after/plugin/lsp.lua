@@ -4,6 +4,7 @@ lsp.ensure_installed({
   'pyright',
   'clangd',
   'lua_ls',
+  'bashls',
 })
 
 lsp.on_attach(function(_, bufnr)
@@ -28,6 +29,7 @@ lsp.setup()
 -- You need to setup `cmp` after lsp-zero
 local cmp = require('cmp')
 local cmp_action = require('lsp-zero').cmp_action()
+local neogen = require('neogen')
 
 cmp.setup({
     formatting = {

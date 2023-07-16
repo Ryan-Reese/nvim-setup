@@ -1,3 +1,5 @@
+vim.g.netrw_winsize = 25
+
 vim.opt.guicursor = "a:block"
 
 vim.opt.nu = true
@@ -27,4 +29,3 @@ vim.opt.signcolumn = "yes"
 vim.opt.isfname:append("@-@")
 
 vim.opt.updatetime = 50
-

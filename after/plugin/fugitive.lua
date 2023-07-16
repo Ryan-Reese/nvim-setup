@@ -1,4 +1,4 @@
-vim.keymap.set("n", "<leader>gg", vim.cmd.Git)
+vim.keymap.set("n", "<leader>git", vim.cmd.Git)
 
 local rmrr_fugitive = vim.api.nvim_create_augroup("rmrr_fugitive", {})
 

@@ -87,7 +87,6 @@ return require('packer').startup(function(use)
     }
     use('onsails/lspkind-nvim')
     use("folke/zen-mode.nvim")
-    use("folke/twilight.nvim")
 
     -- misc
     use('eandrju/cellular-automaton.nvim')

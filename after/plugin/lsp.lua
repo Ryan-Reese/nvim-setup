@@ -29,9 +29,13 @@ lsp.setup()
 -- You need to setup `cmp` after lsp-zero
 local cmp = require('cmp')
 local cmp_action = require('lsp-zero').cmp_action()
-local neogen = require('neogen')
 
 cmp.setup({
+    sources = {
+        {name = 'path'},
+        {name = 'nvim_lsp'},
+        {name = 'buffer', keyword_length = 3},
+    },
     formatting = {
         fields = {'abbr', 'kind', 'menu'},
         format = require('lspkind').cmp_format({

@@ -23,7 +23,7 @@ return require('packer').startup(function(use)
     use('nvim-treesitter/playground')
     use('nvim-treesitter/nvim-treesitter-context')
 
-    -- LSP 
+    -- LSP
     use {
         'VonHeikemen/lsp-zero.nvim',
         branch = 'v2.x',
@@ -42,6 +42,8 @@ return require('packer').startup(function(use)
         {'hrsh7th/nvim-cmp'},     -- Required
         {'hrsh7th/cmp-nvim-lsp'}, -- Required
         {'L3MON4D3/LuaSnip'},     -- Required
+        {'hrsh7th/cmp-path'},
+        {'hrsh7th/cmp-buffer'},
         }
     }
     use('github/copilot.vim')
@@ -84,6 +86,8 @@ return require('packer').startup(function(use)
         tag = 'legacy'
     }
     use('onsails/lspkind-nvim')
+    use("folke/zen-mode.nvim")
+    use("folke/twilight.nvim")
 
     -- misc
     use('eandrju/cellular-automaton.nvim')

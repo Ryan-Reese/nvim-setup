@@ -5,6 +5,7 @@ lsp.ensure_installed({
   'clangd',
   'lua_ls',
   'bashls',
+  'taplo',
 })
 
 lsp.on_attach(function(_, bufnr)

@@ -46,6 +46,13 @@ return require('packer').startup(function(use)
         {'hrsh7th/cmp-buffer'},
         }
     }
+    use {
+        'j-hui/fidget.nvim',
+        tag = 'legacy'
+    }
+    use('onsails/lspkind-nvim')
+
+    -- copilot
     use('github/copilot.vim')
 
     -- git packages
@@ -76,16 +83,18 @@ return require('packer').startup(function(use)
         requires = "nvim-treesitter/nvim-treesitter",
     }
 
+    -- file explorer packages
+    use {
+        'stevearc/oil.nvim',
+        config = function()
+            require('oil').setup()
+        end
+    }
     -- visual packages
     use({ 'rose-pine/neovim', as = 'rose-pine' })
     use('EdenEast/nightfox.nvim')
     use('nvim-lualine/lualine.nvim')
     use('nvim-tree/nvim-web-devicons')
-    use {
-        'j-hui/fidget.nvim',
-        tag = 'legacy'
-    }
-    use('onsails/lspkind-nvim')
     use("folke/zen-mode.nvim")
 
     -- misc

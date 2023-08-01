@@ -1,7 +1,7 @@
 require('lualine').setup {
   options = {
     icons_enabled = true,
-    theme = 'auto',
+    theme = 'rose-pine',
     component_separators = { left = '', right = ''},
     section_separators = { left = '', right = ''},
     disabled_filetypes = {
@@ -12,9 +12,9 @@ require('lualine').setup {
     always_divide_middle = true,
     globalstatus = true,
     refresh = {
-      statusline = 1000,
-      tabline = 1000,
-      winbar = 1000,
+      statusline = 200,
+      tabline = 200,
+      winbar = 200,
     }
   },
   sections = {

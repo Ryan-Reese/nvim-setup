@@ -96,7 +96,7 @@ return require('packer').startup(function(use)
     use('nvim-lualine/lualine.nvim')
     use('nvim-tree/nvim-web-devicons')
     use("folke/zen-mode.nvim")
-
     -- misc
     use('eandrju/cellular-automaton.nvim')
+    use('dstein64/vim-startuptime')
 end)

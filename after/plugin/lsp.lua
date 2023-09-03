@@ -6,6 +6,7 @@ lsp.ensure_installed({
   'lua_ls',
   'bashls',
   'taplo',
+  'jdtls',
 })
 
 lsp.on_attach(function(_, bufnr)

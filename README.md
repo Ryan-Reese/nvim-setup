@@ -1,5 +1,5 @@
 # nvim-setup
-Neovim setup used by Me
+My Neovim setup.
 
 Heavily based off of setup used by ThePrimeAgen.
 

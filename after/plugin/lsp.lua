@@ -7,6 +7,7 @@ lsp.ensure_installed({
   'bashls',
   'taplo',
   'jdtls',
+  'html',
 })
 
 lsp.on_attach(function(_, bufnr)

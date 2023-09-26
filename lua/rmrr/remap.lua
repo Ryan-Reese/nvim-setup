@@ -38,3 +38,11 @@ vim.keymap.set("n", "<leader>wr", function()
     vim.cmd("set wrap!")
 end)
 
+vim.keymap.set("n", "<leader>cc", function()
+    local value = vim.api.nvim_get_option_value("colorcolumn", {})
+    if value == "" then
+        vim.api.nvim_set_option_value("colorcolumn", "80", {})
+    else
+        vim.api.nvim_set_option_value("colorcolumn", "", {})
+    end
+end)

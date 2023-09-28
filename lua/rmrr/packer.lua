@@ -35,7 +35,7 @@ return require('packer').startup(function(use)
             run = function()
                 pcall(vim.cmd, 'MasonUpdate')
             end,
-        },
+            },
         {'williamboman/mason-lspconfig.nvim'}, -- Optional
 
         -- Autocompletion

@@ -90,6 +90,10 @@ return require('packer').startup(function(use)
             require('oil').setup()
         end
     }
+
+    -- command line packages
+    use('gelguy/wilder.nvim')
+
     -- visual packages
     use({ 'rose-pine/neovim', as = 'rose-pine' })
     use('EdenEast/nightfox.nvim')

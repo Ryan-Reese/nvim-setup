@@ -17,19 +17,9 @@ wilder.set_option('pipeline', {
   ),
 })
 
-local highlighters = {
-  wilder.basic_highlighter(),
-}
-
 wilder.set_option('renderer', wilder.popupmenu_renderer({
-  highlighter = highlighters,
-  highlights = {
-    border = 'Normal', -- highlight to use for the border
-  },
-  -- 'single', 'double', 'rounded' or 'solid'
-  -- can also be a list of 8 characters, see :h wilder#popupmenu_border_theme() for more details
-  border = 'single',
+  highlighter = wilder.basic_highlighter(),
   reverse = 0,        -- if 1, shows the candidates from bottom to top
   left = {' ', wilder.popupmenu_devicons()},
-}
-))
+})
+)

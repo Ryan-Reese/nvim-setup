@@ -42,6 +42,18 @@ return require('packer').startup(function(use)
             {'hrsh7th/cmp-nvim-lua'},
         }
     }
+<<<<<<< HEAD
+=======
+    use {
+        'j-hui/fidget.nvim',
+        tag = 'legacy',
+        config = function()
+            require("fidget").setup {
+                -- options
+            }
+        end,
+    }
+>>>>>>> 3e0ca1c85513a3021f05e70ffe1bd0c2d4939340
     use('onsails/lspkind-nvim')
 
     -- copilot

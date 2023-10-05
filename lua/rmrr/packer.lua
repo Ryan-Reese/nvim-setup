@@ -9,8 +9,7 @@ return require('packer').startup(function(use)
 
     -- telescope
     use {
-        'nvim-telescope/telescope.nvim', tag = '0.1.2',
-        -- or                            , branch = '0.1.x',
+        'nvim-telescope/telescope.nvim', branch = '0.1.x',
         requires = { {'nvim-lua/plenary.nvim'} }
     }
     use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
@@ -20,30 +19,27 @@ return require('packer').startup(function(use)
         'nvim-treesitter/nvim-treesitter',
         run = ':TSUpdate'
     }
-    use('nvim-treesitter/playground')
     use('nvim-treesitter/nvim-treesitter-context')
 
     -- LSP
     use {
         'VonHeikemen/lsp-zero.nvim',
-        branch = 'v2.x',
+        branch = 'v3.x',
         requires = {
+            --- Uncomment these if you want to manage LSP servers from neovim
+            {'williamboman/mason.nvim',
+            run = ':MasonUpdate'},
+            {'williamboman/mason-lspconfig.nvim'},
             -- LSP Support
-            {'neovim/nvim-lspconfig'},             -- Required
-            {                                      -- Optional
-            'williamboman/mason.nvim',
-            run = function()
-                pcall(vim.cmd, 'MasonUpdate')
-            end,
-            },
-        {'williamboman/mason-lspconfig.nvim'}, -- Optional
-
-        -- Autocompletion
-        {'hrsh7th/nvim-cmp'},     -- Required
-        {'hrsh7th/cmp-nvim-lsp'}, -- Required
-        {'L3MON4D3/LuaSnip'},     -- Required
-        {'hrsh7th/cmp-path'},
-        {'hrsh7th/cmp-buffer'},
+            {'neovim/nvim-lspconfig'},
+            -- Autocompletion
+            {'hrsh7th/nvim-cmp'},
+            {'hrsh7th/cmp-nvim-lsp'},
+            {'L3MON4D3/LuaSnip'},
+            -- additional sources
+            {'hrsh7th/cmp-path'},
+            {'hrsh7th/cmp-buffer'},
+            {'hrsh7th/cmp-nvim-lua'},
         }
     }
     use('onsails/lspkind-nvim')
@@ -58,13 +54,7 @@ return require('packer').startup(function(use)
     -- helper packages
     use('lukas-reineke/indent-blankline.nvim')
     use('mbbill/undotree')
-    use('tpope/vim-sleuth')
-    use {
-        'numToStr/Comment.nvim',
-        config = function()
-            require('Comment').setup()
-        end
-    }
+    use ('numToStr/Comment.nvim')
     use({
         "folke/trouble.nvim",
         config = function()

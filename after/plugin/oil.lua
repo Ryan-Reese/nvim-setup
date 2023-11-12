@@ -52,7 +52,7 @@ require("oil").setup({
 		["<C-l>"] = "actions.refresh",
 		["-"] = "actions.parent",
 		["_"] = "actions.open_cwd",
-		["`"] = "actions.cd",
+		["<leader>cd"] = "actions.cd",
 		["~"] = "actions.tcd",
 		["g."] = "actions.toggle_hidden",
 	},

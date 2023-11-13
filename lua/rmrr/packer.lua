@@ -81,11 +81,14 @@ return require('packer').startup(function(use)
     use('gelguy/wilder.nvim')
 
     -- visual packages
-    use({ 'rose-pine/neovim', as = 'rose-pine' })
-    use('EdenEast/nightfox.nvim')
     use('nvim-lualine/lualine.nvim')
     use('nvim-tree/nvim-web-devicons')
     use("folke/zen-mode.nvim")
+    -- colorscheme
+    use('ribru17/bamboo.nvim')
+    use({ 'rose-pine/neovim', as = 'rose-pine' })
+    use('kvrohit/mellow.nvim')
+    use('EdenEast/nightfox.nvim')
     -- misc
     use('eandrju/cellular-automaton.nvim')
     use('dstein64/vim-startuptime')

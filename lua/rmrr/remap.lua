@@ -27,8 +27,9 @@ vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
-vim.keymap.set("n", "<leader>o", "o<Esc>k")
-vim.keymap.set("n", "<leader>O", "O<ESC>j")
+vim.keymap.set("n", "<leader>o", "<Cmd>set paste<CR>m`o<Esc>``<Cmd>set nopaste<CR>")
+
+vim.keymap.set("n", "<leader>O", "<Cmd>set paste<CR>m`O<Esc>``<Cmd>set nopaste<CR>")
 
 vim.keymap.set("n", "<leader><leader>", function()
     vim.cmd("so")

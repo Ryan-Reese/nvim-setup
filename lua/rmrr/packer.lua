@@ -28,24 +28,31 @@ return require('packer').startup(function(use)
         requires = {
             --- Uncomment these if you want to manage LSP servers from neovim
             {'williamboman/mason.nvim',
-            run = ':MasonUpdate'},
+                run = ':MasonUpdate'},
             {'williamboman/mason-lspconfig.nvim'},
             -- LSP Support
             {'neovim/nvim-lspconfig'},
             -- Autocompletion
             {'hrsh7th/nvim-cmp'},
+            -- completion sources
             {'hrsh7th/cmp-nvim-lsp'},
-            {'L3MON4D3/LuaSnip'},
-            -- additional sources
             {'hrsh7th/cmp-path'},
             {'hrsh7th/cmp-buffer'},
+            {'hrsh7th/cmp-cmdline'},
+            {'hrsh7th/cmp-calc'},
+            {'hrsh7th/cmp-nvim-lsp-signature-help'},
             {'hrsh7th/cmp-nvim-lua'},
+            -- snippets
+            {'hrsh7th/cmp-vsnip'},
+            {'hrsh7th/vim-vsnip'},
+
         }
     }
     use('onsails/lspkind-nvim')
 
     -- copilot
     use('github/copilot.vim')
+
 
     -- git packages
     use('tpope/vim-fugitive')
@@ -68,6 +75,13 @@ return require('packer').startup(function(use)
         end,
         requires = "nvim-treesitter/nvim-treesitter",
     }
+    use({
+        "kylechui/nvim-surround",
+        tag = "*", -- Use for stability; omit to use `main` branch for the latest features
+        config = function()
+            require("nvim-surround").setup({})
+        end
+    })
 
     -- file explorer packages
     use {
@@ -77,19 +91,23 @@ return require('packer').startup(function(use)
         end
     }
 
-    -- command line packages
-    use('gelguy/wilder.nvim')
-
     -- visual packages
     use('nvim-lualine/lualine.nvim')
     use('nvim-tree/nvim-web-devicons')
     use("folke/zen-mode.nvim")
+
     -- colorscheme
     use('ribru17/bamboo.nvim')
     use({ 'rose-pine/neovim', as = 'rose-pine' })
     use('kvrohit/mellow.nvim')
     use('EdenEast/nightfox.nvim')
+
     -- misc
     use('eandrju/cellular-automaton.nvim')
-    use('dstein64/vim-startuptime')
+
+    -- language-specific packages
+    -- rust
+    use('simrat39/rust-tools.nvim')
+    use('mfussenegger/nvim-dap')
+
 end)

@@ -23,7 +23,6 @@ require('mason-lspconfig').setup({
         'taplo',
         'jdtls',
         'html',
-        'rust_analyzer',
     },
     handlers = {
         lsp_zero.default_setup,
@@ -76,7 +75,6 @@ cmp.setup({
         fields = {'abbr', 'kind', 'menu'},
     },
     mapping = cmp.mapping.preset.insert({
-
         ["<Tab>"] = cmp.mapping(function(fallback)
             if cmp.visible() then
                 cmp.select_next_item()
@@ -97,7 +95,7 @@ cmp.setup({
             end
         end, { "i", "s" }),
 
-        ['<CR>'] = cmp.mapping.confirm({ select = true }),
+        ['<CR>'] = cmp.mapping.confirm({select = false}),
     }),
     sources = {
         {name = 'nvim_lsp'},

@@ -107,7 +107,19 @@ return require('packer').startup(function(use)
 
     -- language-specific packages
     -- rust
-    use('simrat39/rust-tools.nvim')
-    use('mfussenegger/nvim-dap')
+    use({
+        'simrat39/rust-tools.nvim',
+        ft = 'rust',
+        config = function()
+            require('rust-tools').setup({})
+        end
+    })
+    use({
+        'rust-lang/rust.vim',
+        ft = 'rust',
+        init = function()
+            vim.g.rustfmt_autosave = 1
+        end
+    })
 
 end)

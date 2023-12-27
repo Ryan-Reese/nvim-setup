@@ -32,8 +32,7 @@ require('mason-lspconfig').setup({
             require('lspconfig').lua_ls.setup(lua_opts)
         end,
         rust_analyzer = function()
-            local rust_tools = require("rust-tools")
-            rust_tools.setup()
+            require("rust-tools").setup()
         end,
     }
 })
@@ -59,9 +58,6 @@ cmp.setup({
     },
     window = {
         documentation = cmp.config.window.bordered(),
-    },
-    view = {
-        entries = "custom",
     },
     formatting = {
         format = require('lspkind').cmp_format({
@@ -105,11 +101,11 @@ cmp.setup({
     sources = {
         {name = 'nvim_lsp'},
         {name = 'nvim_lsp_signature_help'},
-        {name = 'buffer'},
-        {name = 'path'},
         {name = 'nvim_lua'},
         {name = 'vsnip'},
-        {name = 'calc'}
+        {name = 'buffer'},
+        {name = 'path'},
+        {name = 'calc'},
     },
 })
 

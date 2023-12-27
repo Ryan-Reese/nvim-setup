@@ -4,6 +4,7 @@ lsp_zero.on_attach(function(_, bufnr)
     local opts = {buffer = bufnr, remap = false}
 
     vim.keymap.set("n", "<leader>gd", function() vim.lsp.buf.definition() end, opts)
+    vim.keymap.set("n", "<leader>K", function() vim.lsp.buf.hover() end, opts)
     vim.keymap.set("n", "<leader>ws", function() vim.lsp.buf.workspace_symbol() end, opts)
     vim.keymap.set("n", "<leader>ca", function() vim.lsp.buf.code_action() end, opts)
     vim.keymap.set("n", "<leader>rr", function() vim.lsp.buf.references() end, opts)
@@ -38,7 +39,6 @@ require('mason-lspconfig').setup({
 })
 
 -- You need to setup `cmp` after lsp-zero
-local cmp = require('cmp')
 
 local has_words_before = function()
     unpack = unpack or table.unpack
@@ -50,7 +50,17 @@ local feedkey = function(key, mode)
     vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), mode, true)
 end
 
+local cmp = require('cmp')
+local lspkind = require('lspkind')
 cmp.setup({
+    sources = {
+        {name = 'nvim_lsp'},
+        {name = 'nvim_lua'},
+        {name = 'vsnip'},
+        {name = 'buffer'},
+        {name = 'path'},
+        {name = 'calc'},
+    },
     snippet = {
         expand = function(args)
             vim.fn["vsnip#anonymous"](args.body)
@@ -59,21 +69,23 @@ cmp.setup({
     window = {
         documentation = cmp.config.window.bordered(),
     },
+    view = {
+        entries = {name = 'custom', selection_order = 'near_cursor' }
+    },
     formatting = {
-        format = require('lspkind').cmp_format({
+        format = lspkind.cmp_format({
             mode = 'symbol_text',
             maxwidth = 50,
             ellipsis_char = '...',
             menu = ({
-                buffer = "[Buffer]",
                 nvim_lsp = "[LSP]",
                 nvim_lua = "[Lua]",
                 vsnip = "[Vsnip]",
+                buffer = "[Buffer]",
                 path = "[Path]",
                 calc = "[Calc]",
             }),
         }),
-        fields = {'abbr', 'kind', 'menu'},
     },
     mapping = cmp.mapping.preset.insert({
         ["<Tab>"] = cmp.mapping(function(fallback)
@@ -98,15 +110,6 @@ cmp.setup({
 
         ['<CR>'] = cmp.mapping.confirm({select = false}),
     }),
-    sources = {
-        {name = 'nvim_lsp'},
-        {name = 'nvim_lsp_signature_help'},
-        {name = 'nvim_lua'},
-        {name = 'vsnip'},
-        {name = 'buffer'},
-        {name = 'path'},
-        {name = 'calc'},
-    },
 })
 
 cmp.setup.cmdline(':', {

@@ -1,10 +1,9 @@
-local autocmd = vim.api.nvim_create_autocmd
-local augroup = vim.api.nvim_create_augroup
-local yank_group = augroup('HighlightYank', {})
-local rmrr_group = augroup('rmrr', {})
+local create_autocmd = vim.api.nvim_create_autocmd
+local create_augroup = vim.api.nvim_create_augroup
+local default = create_augroup("default", { clear = true })
 
-autocmd('TextYankPost', {
-    group = yank_group,
+create_autocmd("TextYankPost", {
+    group = default,
     pattern = '*',
     callback = function()
         vim.highlight.on_yank({
@@ -15,8 +14,8 @@ autocmd('TextYankPost', {
     end,
 })
 
-autocmd({"BufWritePre"}, {
-    group = rmrr_group,
+create_autocmd({"BufWritePre"}, {
+    group = default,
     pattern = "*",
     callback = function()
         if not vim.o.binary and vim.o.filetype ~= 'markdown' then

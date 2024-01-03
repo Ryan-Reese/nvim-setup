@@ -114,13 +114,9 @@ require('bamboo').setup {
     },
 }
 -- Set colorscheme after options
--- vim.cmd('colorscheme rose-pine')
--- vim.cmd('colorscheme mellow')
--- vim.cmd("colorscheme duskfox")
 
 -- set colorscheme and transparency
 function ColorBackground(color)
-    color = color
     vim.cmd.colorscheme(color)
     --
     vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
@@ -128,4 +124,7 @@ function ColorBackground(color)
 end
 
 ColorBackground("bamboo")
+-- ColorBackground("rose-pine")
+-- ColorBackground("mellow")
+-- ColorBackground("duskfox")
 

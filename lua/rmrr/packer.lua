@@ -106,6 +106,7 @@ return require('packer').startup(function(use)
 
     -- language-specific packages
     -- rust
+    use('rust-lang/rust.vim')
     use('simrat39/rust-tools.nvim')
 end)
 

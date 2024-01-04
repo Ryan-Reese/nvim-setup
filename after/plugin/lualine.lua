@@ -20,26 +20,22 @@ require('lualine').setup {
     sections = {
         lualine_a = {'mode'},
         lualine_b = {'branch', 'diff', 'diagnostics'},
-        lualine_c = {
-            {
-                'filetype',
-                colored = true,   -- Displays filetype icon in color if set to true
-                icon_only = true, -- Display only an icon for filetype
-                icon = { align = 'right' }, -- Display filetype icon on the right hand side
-            },
+        lualine_c = { '%=',
             {
                 'filename',
-                path = 0,
+                path = 1,
                 shorting_target = 40,
+                separator = "",
             },
-        },
-        lualine_x = {'filesize'},
-        lualine_y = {'location'},
-        lualine_z = {
             {
-                "datetime",
-                style = 'default'
-            }}
+                'filetype',
+                colored = true,
+                icon_only = true,
+            }
+        },
+        lualine_x = {'progress'},
+        lualine_y = {'filesize'},
+        lualine_z = {'location'}
     },
     inactive_sections = {
         lualine_a = {},
@@ -52,6 +48,6 @@ require('lualine').setup {
     tabline = {},
     winbar = {},
     inactive_winbar = {},
-    extensions = {'fugitive', 'fzf', 'trouble'}
+    extensions = {'fugitive', 'fzf', 'mason', 'oil', 'trouble'}
 }
 

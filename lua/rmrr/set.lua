@@ -44,5 +44,6 @@ vim.opt.shellxquote = ""
 
 vim.opt.isfname:append("@-@")
 
+vim.opt.completeopt = "menuone,noinsert,noselect"
 vim.opt.updatetime = 50
 

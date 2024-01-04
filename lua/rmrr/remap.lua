@@ -39,6 +39,9 @@ vim.keymap.set("n", "<leader><leader>", function()
     vim.cmd("so")
 end)
 
+-- exit terminal mode with escape
+vim.keymap.set("t", "<Esc>", "<C-\\><C-n>")
+
 -- toggle line wrapping
 vim.keymap.set("n", "<leader>wr", function()
     vim.cmd("set wrap!")

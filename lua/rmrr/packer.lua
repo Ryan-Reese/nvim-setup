@@ -50,8 +50,27 @@ return require('packer').startup(function(use)
     use('onsails/lspkind-nvim')
 
     -- copilot
-    use('github/copilot.vim')
-
+    use {
+        "zbirenbaum/copilot.lua",
+        cmd = "Copilot",
+        event = "InsertEnter",
+        config = function()
+            require("copilot").setup({
+                panel = {
+                    enabled = false;
+                },
+                suggestion = {
+                    auto_trigger = true,
+                    keymap = {
+                        accept = "<C-j>",
+                        next = false,
+                        prev = false,
+                        dismiss = "<C-k>",
+                    },
+                },
+            })
+        end,
+    }
 
     -- git packages
     use('tpope/vim-fugitive')
@@ -91,7 +110,10 @@ return require('packer').startup(function(use)
     }
 
     -- visual packages
-    use('nvim-lualine/lualine.nvim')
+    use {
+        'nvim-lualine/lualine.nvim',
+        requires = { 'nvim-tree/nvim-web-devicons', opt = true }
+    }
     use('nvim-tree/nvim-web-devicons')
     use("folke/zen-mode.nvim")
 

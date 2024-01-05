@@ -26,7 +26,7 @@ vim.opt.scrolloff = 8
 vim.opt.swapfile = false
 vim.opt.backup = false
 vim.opt.undofile = true
-vim.opt.undodir = "C:/Users/Ryan/AppData/Local/nvim/undodir"
+vim.opt.undodir = os.getenv("LOCALAPPDATA") .. "\\nvim\\undodir"
 
 -- search options
 vim.opt.hlsearch = false

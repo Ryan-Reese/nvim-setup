@@ -18,7 +18,7 @@ vim.opt.signcolumn = "yes"
 
 -- text options
 vim.opt.breakindent = true
-vim.opt.smartindent = true
+vim.opt.cindent = true
 vim.opt.wrap = true
 vim.opt.scrolloff = 8
 

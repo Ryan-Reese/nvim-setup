@@ -116,6 +116,13 @@ return require('packer').startup(function(use)
     }
     use('nvim-tree/nvim-web-devicons')
     use("folke/zen-mode.nvim")
+    use {
+        'j-hui/fidget.nvim',
+        config = function()
+            require('fidget').setup()
+        end
+    }
+
 
     -- colorscheme
     use('ribru17/bamboo.nvim')

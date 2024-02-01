@@ -48,6 +48,16 @@ return require('packer').startup(function(use)
         }
     }
     use('onsails/lspkind-nvim')
+    use({
+        "j-hui/fidget.nvim",
+        config = function()
+            require("fidget").setup({
+                window = {
+                    winblend = 0,
+                }
+            })
+        end
+    })
 
     -- copilot
     use {

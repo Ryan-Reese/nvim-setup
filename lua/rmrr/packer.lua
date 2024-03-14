@@ -52,9 +52,11 @@ return require('packer').startup(function(use)
         "j-hui/fidget.nvim",
         config = function()
             require("fidget").setup({
-                window = {
-                    winblend = 0,
-                }
+                notification = {
+                    window = {
+                        winblend = 0,
+                    },
+                },
             })
         end
     })
@@ -126,13 +128,6 @@ return require('packer').startup(function(use)
     }
     use('nvim-tree/nvim-web-devicons')
     use("folke/zen-mode.nvim")
-    use {
-        'j-hui/fidget.nvim',
-        config = function()
-            require('fidget').setup()
-        end
-    }
-
 
     -- colorscheme
     use('ribru17/bamboo.nvim')
@@ -147,5 +142,10 @@ return require('packer').startup(function(use)
     -- rust
     use('rust-lang/rust.vim')
     use('simrat39/rust-tools.nvim')
+    -- markdown
+    use({ "iamcco/markdown-preview.nvim",
+        run = "cd app && npm install",
+        setup = function() vim.g.mkdp_filetypes = { "markdown" } end,
+        ft = { "markdown" }, })
 end)
 

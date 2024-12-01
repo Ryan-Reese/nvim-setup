@@ -44,7 +44,6 @@ return require('packer').startup(function(use)
             -- snippets
             {'hrsh7th/cmp-vsnip'},
             {'hrsh7th/vim-vsnip'},
-
         }
     }
     use('onsails/lspkind-nvim')

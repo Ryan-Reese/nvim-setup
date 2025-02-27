@@ -1,6 +1,46 @@
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 
+vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv", { desc = 'Move line down' })
+vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv", { desc = 'Move line up' })
+vim.keymap.set('n', 'J', 'mzJ`z', { desc = 'Append next line to current ine' })
+
+-- maintain screen centering when moving around
+vim.keymap.set('n', '<C-d>', '<C-d>zz', { desc = 'Scroll window downwards' })
+vim.keymap.set('n', '<C-u>', '<C-u>zz', { desc = 'Scroll window upwards' })
+vim.keymap.set('n', 'n', 'nzzzv', { desc = 'Next word' })
+vim.keymap.set('n', 'N', 'Nzzzv', { desc = 'Previous word' })
+
+vim.keymap.set('n', 'Q', '<nop>', { desc = 'nop' })
+
+vim.keymap.set('n', '<leader>s', [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = 'Rename word in whole file' })
+
+-- insert lines above or below wihout moving cursor
+vim.keymap.set('n', '<leader>o', '<Cmd>set paste<CR>m`o<Esc>``<Cmd>set nopaste<CR>', { desc = 'Insert line below' })
+vim.keymap.set('n', '<leader>O', '<Cmd>set paste<CR>m`O<Esc>``<Cmd>set nopaste<CR>', { desc = 'Insert line above' })
+
+vim.keymap.set('n', '<leader><leader>', function()
+  vim.cmd 'so'
+end, { desc = 'Runs source file' })
+
+-- exit terminal mode with escape
+vim.keymap.set('t', '<Esc>', '<C-\\><C-n>')
+
+-- toggle line wrapping
+vim.keymap.set('n', '<leader>wr', function()
+  vim.cmd 'set wrap!'
+end, { desc = 'Wrap lines' })
+
+-- togger color column
+vim.keymap.set('n', '<leader>cc', function()
+  local value = vim.api.nvim_get_option_value('colorcolumn', {})
+  if value == '' then
+    vim.api.nvim_set_option_value('colorcolumn', '80', {})
+  else
+    vim.api.nvim_set_option_value('colorcolumn', '', {})
+  end
+end)
+
 -- Clear highlights on search when pressing <Esc> in normal mode
 --  See `:help hlsearch`
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
@@ -8,23 +48,11 @@ vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 -- Diagnostic keymaps
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 
--- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
--- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
--- is not what someone will guess without a bit more experience.
---
 -- NOTE: This won't work in all terminal emulators/tmux/etc. Try your own mapping
 -- or just use <C-\><C-n> to exit terminal mode
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 
--- TIP: Disable arrow keys in normal mode
--- vim.keymap.set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
--- vim.keymap.set('n', '<right>', '<cmd>echo "Use l to move!!"<CR>')
--- vim.keymap.set('n', '<up>', '<cmd>echo "Use k to move!!"<CR>')
--- vim.keymap.set('n', '<down>', '<cmd>echo "Use j to move!!"<CR>')
-
--- Keybinds to make split navigation easier.
 --  Use CTRL+<hjkl> to switch between windows
---
 --  See `:help wincmd` for a list of all window commands
 vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
 vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
@@ -33,15 +61,29 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
-
 -- Highlight when yanking (copying) text
---  Try it with `yap` in normal mode
 --  See `:help vim.highlight.on_yank()`
 vim.api.nvim_create_autocmd('TextYankPost', {
   desc = 'Highlight when yanking (copying) text',
-  group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
+  group = vim.api.nvim_create_augroup('highlight-yank', { clear = true }),
   callback = function()
-    vim.highlight.on_yank()
+    vim.highlight.on_yank {
+      higroup = 'IncSearch',
+      timeout = 50,
+      on_visual = true,
+    }
+  end,
+})
+
+vim.api.nvim_create_autocmd('BufWritePre', {
+  desc = 'Remove trailing whitespace',
+  group = vim.api.nvim_create_augroup('remove-whitespace', { clear = true }),
+  callback = function()
+    if not vim.o.binary and vim.o.filetype ~= 'markdown' then
+      local current_view = vim.fn.winsaveview()
+      vim.cmd [[keeppatterns %s/\s\+$//e]]
+      vim.fn.winrestview(current_view)
+    end
   end,
 })
 

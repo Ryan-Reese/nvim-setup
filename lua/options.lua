@@ -8,11 +8,11 @@ vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.cursorline = true
 
--- [[ gui options ]]
+-- [[ visual options ]]
 vim.opt.guicursor = 'a:block'
 vim.opt.termguicolors = true
-vim.opt.scrolloff = 8
 vim.opt.signcolumn = 'yes'
+vim.opt.scrolloff = 8
 
 -- [[ tab options ]]
 vim.opt.tabstop = 4
@@ -49,13 +49,12 @@ vim.opt.incsearch = true
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
--- Preview substitutions live, as you type!
+-- [[ completion options ]]
 vim.opt.inccommand = 'split'
 vim.opt.completeopt = 'menuone,noinsert,noselect'
 
--- Decrease update time
+-- [[ timing options ]]
 vim.opt.updatetime = 250
--- Decrease mapped sequence wait time
 vim.opt.timeoutlen = 300
 
 -- Configure how new splits should be opened

@@ -13,15 +13,9 @@ vim.keymap.set('n', 'N', 'Nzzzv', { desc = 'Previous word' })
 
 vim.keymap.set('n', 'Q', '<nop>', { desc = 'nop' })
 
-vim.keymap.set('n', '<leader>s', [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = 'Rename word in whole file' })
-
 -- insert lines above or below wihout moving cursor
 vim.keymap.set('n', '<leader>o', '<Cmd>set paste<CR>m`o<Esc>``<Cmd>set nopaste<CR>', { desc = 'Insert line below' })
 vim.keymap.set('n', '<leader>O', '<Cmd>set paste<CR>m`O<Esc>``<Cmd>set nopaste<CR>', { desc = 'Insert line above' })
-
-vim.keymap.set('n', '<leader><leader>', function()
-  vim.cmd 'so'
-end, { desc = 'Runs source file' })
 
 -- exit terminal mode with escape
 vim.keymap.set('t', '<Esc>', '<C-\\><C-n>')
@@ -39,7 +33,7 @@ vim.keymap.set('n', '<leader>cc', function()
   else
     vim.api.nvim_set_option_value('colorcolumn', '', {})
   end
-end)
+end, { desc = 'Colour column' })
 
 -- Clear highlights on search when pressing <Esc> in normal mode
 --  See `:help hlsearch`
@@ -58,6 +52,5 @@ vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left wind
 vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
-
 
 -- vim: ts=2 sts=2 sw=2 et

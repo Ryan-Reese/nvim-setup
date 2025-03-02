@@ -26,21 +26,21 @@ require('lazy').setup({
 
   require 'kickstart/plugins/which-key',
 
-  require 'kickstart/plugins/telescope',
+  require 'plugins/telescope',
 
-  require 'kickstart/plugins/lspconfig',
+  require 'plugins/lspconfig',
 
   require 'kickstart/plugins/conform',
 
   require 'kickstart/plugins/cmp',
 
-  require 'kickstart/plugins/tokyonight',
+  require 'plugins/bamboo',
 
   require 'kickstart/plugins/todo-comments',
 
   require 'kickstart/plugins/mini',
 
-  require 'kickstart/plugins/treesitter',
+  require 'plugins/treesitter',
 
   require 'plugins/copilot',
 
@@ -54,7 +54,7 @@ require('lazy').setup({
   -- require 'kickstart.plugins.debug',
   require 'kickstart/plugins/indent_line',
   -- require 'kickstart.plugins.lint',
-  require 'kickstart.plugins.autopairs',
+  -- require 'kickstart.plugins.autopairs',
   -- require 'kickstart.plugins.neo-tree',
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`

@@ -40,6 +40,7 @@ return {
       -- See `:help cmp`
       local cmp = require 'cmp'
       local luasnip = require 'luasnip'
+      local neogen = require 'neogen'
       luasnip.config.setup {}
 
       cmp.setup {
@@ -112,6 +113,8 @@ return {
               cmp.select_next_item()
             elseif luasnip.locally_jumpable(1) then
               luasnip.jump(1)
+            elseif neogen.jumpable() then
+              neogen.jump_next()
             else
               fallback()
             end
@@ -122,6 +125,8 @@ return {
               cmp.select_prev_item()
             elseif luasnip.locally_jumpable(-1) then
               luasnip.jump(-1)
+            elseif neogen.jumpable(true) then
+              neogen.jump_prev()
             else
               fallback()
             end

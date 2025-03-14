@@ -43,6 +43,7 @@ end)
 vim.opt.undofile = true
 vim.opt.swapfile = false
 vim.opt.backup = false
+vim.opt.confirm = true
 
 -- [[ searching options ]]
 vim.opt.incsearch = true

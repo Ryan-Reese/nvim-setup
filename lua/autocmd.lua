@@ -15,6 +15,8 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
+-- Not needed with conform?
+--[===[
 vim.api.nvim_create_autocmd('BufWritePre', {
   desc = 'Remove trailing whitespace',
   group = vim.api.nvim_create_augroup('remove-whitespace', { clear = true }),
@@ -26,3 +28,4 @@ vim.api.nvim_create_autocmd('BufWritePre', {
     end
   end,
 })
+--]===]

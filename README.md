@@ -1,3 +1,3 @@
-# kickstart-modular.nvim
+# My Neovim Setup
 
-This is a fork of [dam9000/kickstart-modular.nvim](https://github.com/dam9000/kickstart-modular.nvim).
+Initially forked from  [dam9000/kickstart-modular.nvim](https://github.com/dam9000/kickstart-modular.nvim).

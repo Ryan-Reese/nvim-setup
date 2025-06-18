@@ -8,7 +8,8 @@ return {
         enabled = false,
       },
       suggestion = {
-        auto_trigger = true,
+        auto_trigger = false,
+        trigger_on_accept = true,
         keymap = {
           accept = '<C-j>',
           next = false,

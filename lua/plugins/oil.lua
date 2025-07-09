@@ -16,7 +16,7 @@ return {
         'icon',
         'permissions',
         'size',
-        'mtime',
+        { 'mtime', format = '%d/%m/%y %H:%M:%S' },
       },
       restore_win_options = true,
       -- Send deleted files to the trash instead of permanently deleting them (:help oil-trash)

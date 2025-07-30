@@ -73,6 +73,7 @@ return {
       vim.keymap.set('n', '<leader>ss', builtin.builtin, { desc = '[S]earch [S]elect Telescope' })
       vim.keymap.set('n', '<leader>sw', builtin.grep_string, { desc = '[S]earch current [W]ord' })
       vim.keymap.set('n', '<leader>sg', builtin.current_buffer_fuzzy_find, { desc = '[/] Fuzzily search in current buffer' })
+      vim.keymap.set('n', '<leader>sb', builtin.git_branches, { desc = '[S]earch git [B]ranches' })
       vim.keymap.set('n', '<leader>s/', builtin.live_grep, { desc = '[S]earch by [G]rep' })
       vim.keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
       vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })
